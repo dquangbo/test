@@ -1,0 +1,29 @@
+---
+output: html_document
+#geometry: inner=3.8cm, outer=25mm, top=25mm, bottom=25mm
+#documentclass: report
+#header_includes:
+#- \usepackage{graphicx}
+#- \usepackage{booktabs}
+#- \usepackage{tabularx}
+---
+
+```{r, echo=TRUE, message=FALSE, warning=TRUE}
+library(dplyr)
+library(huxtable)
+lorem1 <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec quam ut tortor interdum pulvinar id vitae magna. Proin at diam vitae lectus dignissim auctor nec dictum lectus. Fusce venenatis eros congue velit feugiat, ac aliquam ipsum gravida. Cras bibendum malesuada est in tempus."
+
+lorem2 <- "Integer vel placerat purus. Nulla facilisi. Etiam odio magna, porttitor et est nec, placerat pellentesque ex."
+ht <-
+huxtable(
+  Col1 = c("Paragraph 1", "Paragraph 2"),
+  Text = c(lorem1, lorem2), add_colnames = TRUE
+) %>%
+  set_wrap(value = TRUE)     %>%
+  set_width(1)                 %>%
+  set_col_width(c(0.3, 0.7))   %>%
+  set_valign("top")
+ht
+valign(ht)
+```
+
